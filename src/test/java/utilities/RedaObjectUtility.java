@@ -43,16 +43,5 @@ public class RedaObjectUtility {
 		return pro.getProperty("password");
 	}
 	
-	
-	public static void main(String[] args) {
-		
-		RedaObjectUtility read = new RedaObjectUtility();
-		
-		String url = read.getBankUrl();
-		String id = read.getUserName();
-		String pass = read.getPassword();
-		
-		System.out.println("url : "+url+"\n"+"id : "+id+"\n"+"passWord : "+pass);
-	}
 
 }

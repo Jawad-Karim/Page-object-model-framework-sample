@@ -47,12 +47,6 @@ public class ExcelUtility {
 		return wb.getSheet(SheetName).getRow(rowNo).getCell(cellNo).getNumericCellValue();
 	}
 	
-	
-	public static void main(String[] args) {
-		
-		ExcelUtility xl = new ExcelUtility();
-		String data = xl.getStringData(0, 0, 0);
-		System.out.println("data : "+data);
-	}
+
 
 }

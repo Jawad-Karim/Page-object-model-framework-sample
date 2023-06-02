@@ -4,11 +4,6 @@ import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class RobotUtility {
 
 
@@ -42,28 +37,6 @@ public class RobotUtility {
 		robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
 		robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
 	}
-	
-	
-	
-	public static void main(String[] args) throws Exception {
-		
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.facebook.com/");
-		
-		driver.manage().window().maximize();
-		
-		WaitUtility.implecit_wait(driver, 20);
-		
-		RobotUtility.pressTAB();
-		RobotUtility.pressTAB();
-		RobotUtility.pressTAB();
-		RobotUtility.pressTAB();
-		
-		RobotUtility.pressENTER();
-		
-	}
-
 
 
 

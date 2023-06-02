@@ -32,7 +32,7 @@ public class BrowserFactory {
 		}
 		
 		driver.manage().window().maximize();
-		WaitUtility.implecit_wait(driver, 10);
+		WaitUtility.setImplicitWait(10);
 		
 		driver.get(url);
 		
