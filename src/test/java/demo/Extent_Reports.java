@@ -1,6 +1,7 @@
 package demo;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +13,6 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import utilities.ScreenShotTaker;
 
 public class Extent_Reports {
@@ -33,7 +33,6 @@ public class Extent_Reports {
 		
 		logger = extent.createTest("MyFirstTest");
 		
-		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		
 		driver.get("https://www.facebook.com/");
@@ -42,7 +41,7 @@ public class Extent_Reports {
 		driver.manage().window().maximize();
 		logger.info("window maximized");
 		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		logger.info("wait is setup");
 		
 		String imagePath = ScreenShotTaker.take_screenshot(driver, "facebook");

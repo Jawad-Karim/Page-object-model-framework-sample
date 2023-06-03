@@ -1,7 +1,6 @@
 package utilities;
 
-import java.util.concurrent.TimeUnit;
-
+import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,13 +11,13 @@ public class WaitUtility {
 	public static WebDriver driver;
 	
 	public static void setImplicitWait(long seconds) {
-		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
 	}
 	
 	
 	public static void explecit_waitForVisibilityOfElement(long timeOutInSeconds, WebElement element) {
 		
-		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
@@ -26,7 +25,7 @@ public class WaitUtility {
 
 	public void waitForElementToBeClickable(WebElement element, long timeOutInSeconds) {
 
-		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
