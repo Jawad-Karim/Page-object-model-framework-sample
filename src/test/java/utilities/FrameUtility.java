@@ -5,21 +5,21 @@ import org.openqa.selenium.WebElement;
 
 public class FrameUtility {
 
-	WebDriver driver;
+	public static WebDriver driver;
 
 	public FrameUtility(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public void switchToFrame(int FrameIndex) {
+	public static void switchToFrame(int FrameIndex) {
 		driver.switchTo().frame(FrameIndex);
 	}
 
-	public void switchToFrame(String FrameName) {
+	public static void switchToFrame(String FrameName) {
 		driver.switchTo().frame(FrameName);
 	}
 
-	public void switchToFrame(WebElement element) {
+	public static void switchToFrame(WebElement element) {
 		driver.switchTo().frame(element);
 	}
 

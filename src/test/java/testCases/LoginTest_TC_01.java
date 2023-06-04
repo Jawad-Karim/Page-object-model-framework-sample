@@ -9,20 +9,17 @@ import utilities.ScreenShotTaker;
 
 public class LoginTest_TC_01 extends BaseClass {
 
-
 	String bankUrl = "https://demo.guru99.com/V4/index.php";
 	LoginPage login;
 	String screenshot_path;
-	
+
 	@Test
 	public void check() {
-		
 		System.out.println("test method");
 	}
 
 	@Test(dataProvider = "test_data")
 	public void loginPageTest(String userName, String passWord) throws Exception {
-
 
 		ScreenShotTaker.take_screenshot(driver, "facebook");
 
@@ -55,12 +52,7 @@ public class LoginTest_TC_01 extends BaseClass {
 		logger.info("title : "+title);
 
 		logger.addScreenCaptureFromPath(screenshot_path);
-
-
-
 	}
-
-
 
 	@DataProvider(name = "test_data")
 	public Object[][] provideData(){
@@ -75,11 +67,11 @@ public class LoginTest_TC_01 extends BaseClass {
 	}
 
 	public boolean alertPresent() {
-
 		try {
 			driver.switchTo().alert();
 			return true;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return false;
 		}
 	}

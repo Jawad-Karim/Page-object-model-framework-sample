@@ -5,48 +5,41 @@ import org.openqa.selenium.WebDriver;
 
 public class AlertUtility {
 
+	public static WebDriver driver;
 
-	static Alert alert;
+	public AlertUtility(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public static Alert alert() {
+		return driver.switchTo().alert();
+	}	
 
 	public static void acceptAlert() {
-
-		alert.accept();	
-	}
-	
+		alert().accept();	
+	}	
 
 	public static void dismissAlert() {
-
-		alert.dismiss();	
-	}
-	
+		alert().dismiss();	
+	}	
 
 	public static String getAlertText() {
-
-		String alert_text = alert.getText();
+		String alert_text = alert().getText();
 		return alert_text;
-	}
-	
+	}	
 
 	public static void sendMessageToAlert(String message) {
-
-		alert.sendKeys(message);
-	}
-	
-	
+		alert().sendKeys(message);
+	}	
 
 	public static boolean isAlertPresent(WebDriver driver) {
-
 		try {
-
 			driver.switchTo().alert();
 			return true;
-
 		} 
 		catch (Exception e) {
-
 			return false;
 		}
 	}
-
 
 }
