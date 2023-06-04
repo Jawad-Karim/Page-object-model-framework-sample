@@ -41,5 +41,4 @@ public class AlertUtility {
 			return false;
 		}
 	}
-
 }
