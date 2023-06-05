@@ -1,15 +1,10 @@
 package testCases;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
 import utilities.BrowserFactory;
 
 public class BaseClass {
@@ -23,7 +18,7 @@ public class BaseClass {
 	public ExtentTest logger;
 
 
-	@BeforeSuite
+	//@BeforeSuite
 	public void setUp() {
 
 		String timeStamp = new SimpleDateFormat("MM.dd.yyyy__HH.mm.ss").format(new Date());
@@ -36,7 +31,7 @@ public class BaseClass {
 		logger.info("suite is set up");		
 	}
 
-	//@BeforeClass
+	//@BeforeTest
 	public void startup() {
 
 		driver = BrowserFactory.startBrowser("chrome", baseUrl);

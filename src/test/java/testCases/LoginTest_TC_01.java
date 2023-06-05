@@ -46,7 +46,6 @@ public class LoginTest_TC_01 extends BaseClass {
 		else {
 			System.out.println("not any alert");
 		}
-
 		String title = driver.getTitle();
 		System.out.println("title : "+title);
 		logger.info("title : "+title);
@@ -56,13 +55,11 @@ public class LoginTest_TC_01 extends BaseClass {
 
 	@DataProvider(name = "test_data")
 	public Object[][] provideData(){
-
 		return new Object[][] {
 			{"mngr506815", "dybunAr"},
 			{"mng3455792", "UsEz5dU"},
 			{"mngr506815", "dybunAr"},
 			{"mngr506815", "dybunAr"}
-
 		};	
 	}
 
