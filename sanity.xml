@@ -3,9 +3,6 @@
 <suite name="Suite" parallel="none">
   <test name="Test">
     <classes>
-      <class name="testScripts.TestNGReportWithScreenshot"/>
-      <class name="utilities.XLdataProvider"/>
-      <class name="testScripts.TC001_LoginPageTest"/>
       <class name="testScripts.TC002AddNewCustomerTest"/>
     </classes>
   </test> <!-- Test -->
