@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="2" failed="0" total="2" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="303" started-at="2023-08-27T21:44:31Z" finished-at="2023-08-27T21:44:32Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="303" started-at="2023-08-27T21:44:31Z" finished-at="2023-08-27T21:44:32Z">
+      <class name="testScripts.TC002AddNewCustomerTest">
+        <test-method status="FAIL" signature="beforeMethod(java.lang.reflect.Method, java.lang.String)[pri:0, instance:testScripts.TC002AddNewCustomerTest@402f32ff]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2023-08-27T17:44:31Z" finished-at="2023-08-27T17:44:31Z">
+          <exception class="org.testng.TestNGException">
+            <message>
+              <![CDATA[
+Parameter 'browser' is required by @Configuration on method beforeMethod but has not been marked @Optional or defined
+in C:\Users\jawad\eclipse-workspace\page_object_model\regression.xml]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.TestNGException: 
+Parameter 'browser' is required by @Configuration on method beforeMethod but has not been marked @Optional or defined
+in C:\Users\jawad\eclipse-workspace\page_object_model\regression.xml
+	at org.testng.internal.Parameters.createParameters(Parameters.java:154)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:361)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:84)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:201)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:589)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:822)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1130)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:750)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.TestNGException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="addNewCustomerPage()[pri:0, instance:testScripts.TC002AddNewCustomerTest@402f32ff]" name="addNewCustomerPage" duration-ms="0" started-at="2023-08-27T17:44:32Z" finished-at="2023-08-27T17:44:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addNewCustomerPage -->
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testScripts.TC002AddNewCustomerTest@402f32ff]" name="afterMethod" is-config="true" duration-ms="0" started-at="2023-08-27T17:44:32Z" finished-at="2023-08-27T17:44:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- testScripts.TC002AddNewCustomerTest -->
+      <class name="testScripts.TC001_LoginPageTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:testScripts.TC001_LoginPageTest@48eff760]" name="setup" is-config="true" duration-ms="287" started-at="2023-08-27T17:44:31Z" finished-at="2023-08-27T17:44:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testScripts.TC001_LoginPageTest@48eff760]" name="afterMethod" is-config="true" duration-ms="0" started-at="2023-08-27T17:44:32Z" finished-at="2023-08-27T17:44:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="beforeMethod(java.lang.reflect.Method, java.lang.String)[pri:0, instance:testScripts.TC001_LoginPageTest@48eff760]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2023-08-27T17:44:32Z" finished-at="2023-08-27T17:44:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="login_With_validID_validPassword()[pri:1, instance:testScripts.TC001_LoginPageTest@48eff760]" name="login_With_validID_validPassword" duration-ms="0" started-at="2023-08-27T17:44:32Z" finished-at="2023-08-27T17:44:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login_With_validID_validPassword -->
+      </class> <!-- testScripts.TC001_LoginPageTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
