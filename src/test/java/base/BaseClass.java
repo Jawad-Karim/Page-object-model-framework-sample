@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
@@ -70,7 +71,6 @@ public class BaseClass {
 		logger = extent.createTest(method.getName());
 		driver = BrowserFactory.startBrowser(BrowserName);
 		driver.get(pro.getProperty("url"));
-		logger.info("browser opened");
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		
 	}
@@ -78,8 +78,10 @@ public class BaseClass {
 	@AfterMethod
 	public void afterMethod(ITestResult result) {
 		if(result.getStatus()==ITestResult.SUCCESS) {
-			logger.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" test is passed", ExtentColor.GREEN));
 			logger.pass(MarkupHelper.createLabel(result.getName()+" test is passed", ExtentColor.GREEN));
+			
+			String screenShotPath = ScreenShotTaker.take_screenshot(driver, result.getName());
+			logger.addScreenCaptureFromPath(screenShotPath);
 		}
 		else if(result.getStatus()==ITestResult.SKIP) {
 			logger.log(Status.SKIP, MarkupHelper.createLabel(result.getName()+" test is skipped", ExtentColor.ORANGE));
@@ -91,11 +93,11 @@ public class BaseClass {
 			String screenShotPath = ScreenShotTaker.take_screenshot(driver, result.getName());
 			logger.addScreenCaptureFromPath(screenShotPath);
 		}
-		driver.close();
+		//driver.close();
 		driver = null;
 	}
 	
-	//@AfterTest
+	@AfterTest
 	public void afterClass() {
 		
 		extent.flush();

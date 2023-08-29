@@ -56,22 +56,18 @@ public class AddNewCustomer {
 	private WebElement submit;
 
 	public void clickNewCustomer() {
-
 		newCustomer.click();
 	}
 
-	public void enterCustomerName() {
-
-		custName.sendKeys("jawad karim");
+	public void enterCustomerName(String cName) {
+		custName.sendKeys(cName);
 	}
 
 	public void clickOnMale() {
-
 		genderMale.click();
 	}
 
 	public void clickOnFemale() {
-
 		genderFemale.click();
 	}
 
@@ -83,43 +79,34 @@ public class AddNewCustomer {
 	}
 
 	public void enterAddress(String AddressTXT) {
-
 		address.sendKeys(AddressTXT);
 	}
 
 	public void enterCityName(String city) {
-
 		cityName.sendKeys(city);
 	}
 
 	public void enterStateName(String state) {
-
 		stateName.sendKeys(state);
 	}
 
 	public void enterPinNo(String pin) {
-
 		pinNo.sendKeys(pin);
 	}
 
 	public void enterPhoneNo(String phone) {
-
 		phoneNo.sendKeys(phone);
 	}
 
 	public void enterEmail(String email) {
-
 		emailId.sendKeys(email);
 	}
 
 	public void enterPassWord(String pass) {
-
 		newPassword.sendKeys(pass);
 	}
 
-
 	public void clickOnSubmitButton() {
-
 		submit.click();
 	}
 

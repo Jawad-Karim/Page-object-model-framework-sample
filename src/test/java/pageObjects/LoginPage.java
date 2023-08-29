@@ -31,23 +31,19 @@ public class LoginPage extends BaseClass{
 	@FindBy(how = How.XPATH, using = "//a[normalize-space()='Log out']")
 	private WebElement logout;
 	
-	public void typeUserName(String id) {
-		
+	public void typeUserName(String id) {		
 		userName.sendKeys(id);
 	}
 	
-	public void typePassword(String pass) {
-		
+	public void typePassword(String pass) {		
 		password.sendKeys(pass);
 	}
 	
-	public void clickLoginButton() {
-		
+	public void clickLoginButton() {		
 		logButton.click();
 	}
 	
-	public void logOutButton() {
-		
+	public void logOutButton() {		
 		logout.click();
 	}
 
