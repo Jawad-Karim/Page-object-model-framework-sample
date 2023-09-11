@@ -31,7 +31,7 @@ public class TC002AddNewCustomerTest extends BaseClass{
 		logger.info("login successful & page title is : "+ title);
 		
 		Assert.assertEquals(title,  "Guru99 Bank Manager HomePage");
-		logger.pass("title is verification successful");
+		logger.pass("title verification is successful");
 
 		Thread.sleep(2000);
 		newCust = new AddNewCustomer(driver);

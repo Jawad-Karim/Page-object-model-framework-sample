@@ -3,17 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="testScripts.TC001_LoginPageTest"/>
+      <class name="testScripts.Functional_database_test"/>
     </classes>
   </test> <!-- Default test -->
   <test name="Default test(failed)">
     <classes>
-      <class name="testScripts.TC001_LoginPageTest">
+      <class name="testScripts.Functional_database_test">
         <methods>
-          <include name="login_With_validID_validPassword"/>
-          <include name="setup"/>
+          <include name="test1"/>
         </methods>
-      </class> <!-- testScripts.TC001_LoginPageTest -->
+      </class> <!-- testScripts.Functional_database_test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
