@@ -29,12 +29,6 @@ public class XLutils {
 				data[i][j] = wb.getSheetAt(0).getRow(i).getCell(j).getStringCellValue();			
 			}
 		}
-
-		//print the datas of two dimensional arrays
-		for(int i=0; i<row; i++) {
-			for(int j=0; j<col; j++)				
-				System.out.println("data5 : "+ data[i][j]);
-		}
 		return data;
 
 	}
