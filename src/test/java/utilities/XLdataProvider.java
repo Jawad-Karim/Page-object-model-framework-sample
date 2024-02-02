@@ -17,7 +17,7 @@ public class XLdataProvider {
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
 		String data1 = wb.getSheetAt(0).getRow(0).getCell(0).getStringCellValue();
-		System.out.println("first data : "+data1);
+		System.out.println("first Row, first Column data : "+data1);
 
 		int row = wb.getSheetAt(0).getLastRowNum();
 		System.out.println("total row number : "+ row);
@@ -28,26 +28,29 @@ public class XLdataProvider {
 		for(int i=0; i<row; i++) {
 
 			String data2 = wb.getSheetAt(0).getRow(i).getCell(0).getStringCellValue();
-			System.out.println("first column data : "+data2);
+			System.out.println("all rows of first column data : "+data2);
 		}
 
 
 		for(int j=0; j<col; j++) {
 
 			String data3 = wb.getSheetAt(0).getRow(4).getCell(j).getStringCellValue();
-			System.out.println("data _3 : "+data3);
+			System.out.println("4th row and all columns data : "+data3);
 		}
 
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<col; j++) {
 
 				String data4 = wb.getSheetAt(0).getRow(i).getCell(j).getStringCellValue();
-				System.out.println("data_4 : "+data4);
+				System.out.println("all rows and all column's data : "+data4);
 			}
 		}
 
+		//**************** declare two dimensional array *******************************
 		String[][] data5 = new String[row][col];
 		String[][] data6 = new String[row][col];
+		
+		//**************** store Excel datas into two dimensional arrays ***************
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<col; j++) {
 
@@ -55,6 +58,7 @@ public class XLdataProvider {
 			}
 		}
 
+		//************ print the datas of two dimensional arrays *********************** 
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<col; j++)				
 				System.out.println("data5 : "+ data5[i][j]);

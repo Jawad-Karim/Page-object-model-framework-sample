@@ -7,9 +7,39 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
 
 public class XLutils {
+	
+	//******************** Approach By Jawad Karim *********************************
+	public String[][] XLdataProvider () throws Exception {
 
+		File file = new File("C:/Users/jawad/OneDrive/Documents/Bank_data.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+
+		int row = wb.getSheetAt(0).getLastRowNum();
+		int col = wb.getSheetAt(0).getRow(row).getLastCellNum();
+		
+		String[][] data = new String[row][col]; //declare array & store datas from XL
+		
+		for(int i=0; i<row; i++) {
+			for(int j=0; j<col; j++) {
+
+				data[i][j] = wb.getSheetAt(0).getRow(i).getCell(j).getStringCellValue();			
+			}
+		}
+
+		//print the datas of two dimensional arrays
+		for(int i=0; i<row; i++) {
+			for(int j=0; j<col; j++)				
+				System.out.println("data5 : "+ data[i][j]);
+		}
+		return data;
+
+	}
+	
+	//************************ Approach By Pavan **********************************
 	public static FileInputStream fis;
 	public static XSSFWorkbook wb;
 	public static XSSFSheet sheet;
