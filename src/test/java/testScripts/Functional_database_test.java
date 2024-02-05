@@ -57,7 +57,7 @@ public class Functional_database_test {
 		Class.forName("com.mysql.jdbc.driver"); //driver loaded
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/openshop", "root", "");
 		Statement smt = conn.createStatement();
-		String query = "select firstname, lastname, email";		
+		String query = "select firstname, lastname, email from tableName";		
 		ResultSet rs = smt.executeQuery(query);
 		
 		boolean status = false;
