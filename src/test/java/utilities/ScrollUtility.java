@@ -1,10 +1,13 @@
 package utilities;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ScrollUtility {
 
-	public static JavascriptExecutor je;
+	static WebDriver driver;
+	
+	public static JavascriptExecutor je = (JavascriptExecutor)driver;
 
 	public static void scrollPage(int pageHeight) {
 		//je.executeScript("window.scrollTo(0, pageHeight)");
