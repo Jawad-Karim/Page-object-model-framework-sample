@@ -39,8 +39,8 @@ public class TC002AddNewCustomerTest extends BaseClass{
 		newCust.clickNewCustomer();
 		logger.info("clicked on new customer option");
 		Thread.sleep(1000);
-		
-		driver.navigate().back();
+
+		driver.navigate().back();   // to handle an uncertain pop-up.
 		driver.navigate().forward();
 
 		Thread.sleep(1000);
