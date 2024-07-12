@@ -31,7 +31,7 @@ public class ScreenShotTaker {
 		return screenShotPath;
 	}
 
-	/*	// add screenShot to testNG email-able report
+	/*	// add screenShot to testNG email-able report (works in java 8)
 		 
 		File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(source, new File("screenShotsFolder//screenshotName.png"));
