@@ -41,6 +41,10 @@ public class RandomFakeDataGenerator {
 		String num = RandomStringUtils.randomNumeric(5);			//only numeric
 		String alfaNum = RandomStringUtils.randomAlphanumeric(5);	//alphabetic and numeric
 		
+		String data = RandomStringUtils.randomAlphabetic(10);
+		String email = data+"@gmail.com";
+		System.out.println("email: "+email);
+		
 		System.out.println(alfa);
 		System.out.println(num);
 		System.out.println(alfaNum);
