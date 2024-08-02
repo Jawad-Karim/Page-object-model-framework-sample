@@ -1,0 +1,265 @@
+************ TestNG Codes **********************************************
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Loan Department" parallel="tests" thread-count="6">
+
+<test name="Regression1">
+    <classes>
+      <class name="test.sample.ParameterSample"/>
+      <class name="test.sample.ParameterTest"/>
+   </classes>
+</test>
+
+
+
+*** execute all tests from a whole package ******************************
+
+	<test name="Personal loan">
+
+		<packages>
+			<package name="test" />
+		</packages>
+
+	</test>
+	
+	
+	
+****  specify groups and methods to be included or excluded *************
+
+public class Test1 {
+
+  @Test(groups = { "functest", "checkintest" })
+  public void testMethod1() {
+  }
+
+  @Test(groups = {"functest", "checkintest"} )
+  public void testMethod2() {
+  }
+
+  @Test(groups = { "functest" })
+  public void testMethod3() {
+  }
+}
+----------specify groups-------------------
+<test name="Test1">
+  <groups>
+    <run>
+      <include name="functest"/>
+      <include name="func.*"/>		[Group name starts with func]
+      <include name=".*test"/>		[Group name ends with test]
+      <exclude name="brokenTests"/>
+    </run>
+  </groups>
+</test>
+
+---------- specify test method--------------
+  <classes>
+    <class name="test.IndividualMethodsTest">
+      <methods>
+        <include name="testMethod"/>
+      </methods>
+    </class>
+  </classes>
+</test>
+
+
+**** run Group of Groups ***************************
+
+<test name="Regression1">
+  <groups>
+    <define name="functest">
+      <include name="windows"/>
+      <include name="linux"/>
+    </define>
+
+    <define name="all">
+      <include name="functest"/>
+      <include name="checkintest"/>
+    </define>
+
+    <run>
+      <include name="all"/>
+    </run>
+  </groups>
+</test>
+
+
+**** define groups at the class level and then add groups at the method level *************
+
+@Test(groups = { "checkin-test" })
+public class All {
+
+  @Test(groups = { "func-test" })
+  public void method1() {
+      //test code goes here
+  }
+}
+
+
+****** Parameters from testng.xml ********************************
+
+@Parameters({ "first-name" , "last-name"})
+@Test
+public void testSingleString(String firstName, String lastName) {
+  System.out.println("first name " + firstName + "last name " + lastName);
+  assert "Cedric".equals(firstName);
+}
+--------------------------
+<suite name="My suite">
+  <parameter name="first-name"  value="Cedric"/>
+  <parameter name="last-name"  value="towsend"/>
+  <test name="Simple example">
+  <!-- ... -->
+  </test>
+</suite>
+
+
+***** Parameters with DataProviders ******************************
+
+@DataProvider(name = "test1")
+public Object[][] createData1() {
+ return new Object[][] { { "Cedric", 36 }, { "Anne", 37} };
+}
+----------------------------
+@Test(dataProvider = "test1")
+public void verifyData1(String n1, Integer n2) {
+ System.out.println(n1 + " " + n2);
+}
+will print
+----------
+Cedric 36
+Anne 37
+
+
+***** Class level annotations *********************************
+@Test
+public class Test1 {
+
+  public void test1() {
+  }
+
+  @Test(groups = "g1")  [still can also declare Group]
+  public void test2() {
+  }
+}
+
+
+**** Ignoring tests ********************************************
+
+//package level
+------------
+@Ignore
+package com.testng.master;
+
+//class level
+-------------
+@Ignore
+public class TestcaseSample {
+
+    @Test
+    public void testMethod1() {
+    }
+}
+
+//test method level
+-------------------
+@Test(enabled=false)
+    public void testMethod2() {
+    }
+    
+    
+**** parallel execution ********************************************
+	
+	<suite name="My suite" parallel="tests" thread-count="5">
+	<suite name="My suite" parallel="classes" thread-count="5">
+	<suite name="My suite" parallel="methods" thread-count="5">
+	<suite name="My suite" parallel="instances" thread-count="5">
+	
+	
+
+**** Re-running failed tests *********************************************
+Every time tests fail in a suite, TestNG creates a file called testng-failed.xml in the output directory.
+We can re-run failed tests by implementing ' IRetryAlnalyzer ' interface
+
+public class MyRetry implements IRetryAnalyzer {
+
+  private int retryCount = 0;
+  private static final int maxRetryCount = 3;
+
+  @Override
+  public boolean retry(ITestResult result) {
+    if (retryCount < maxRetryCount) {
+      retryCount++;
+      return true;
+    }
+    return false;
+  }
+}
+----------------------------------
+public class TestclassSample {
+
+  @Test(retryAnalyzer = MyRetry.class)
+  public void test2() {
+    Assert.fail();
+  }
+}
+
+
+*** set Listeners class *******************************************
+
+public class MyListener extends TestListenerAdapter {
+  private int m_count = 0;
+
+  @Override
+  public void onTestFailure(ITestResult tr) {
+    log("F");
+  }
+
+  @Override
+  public void onTestSkipped(ITestResult tr) {
+    log("S");
+  }
+
+  @Override
+  public void onTestSuccess(ITestResult tr) {
+    log(".");
+  }
+
+  private void log(String string) {
+    System.out.print(string);
+    if (++m_count % 40 == 0) {
+      System.out.println(" ");
+    }
+  }
+}
+-------------------------------------------------------	
+<suite>
+	<listeners>
+		<listener class-name="test.MyListener" />
+		<listener class-name="com.example.MyMethodInterceptor" />
+	</listeners>
+	
+	<test name="Car Loan">
+		<parameter name="URL" value="carloan.com" />
+		<parameter name="APIKey/usrname" value="123456" />
+		<classes>
+
+			<class name="test.day3">
+				<methods>
+					<exclude name="API.*" /> <!-- exclude tests that starts with API -->
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite> 
+	
+	
+**** Test results --> Success, failure and assert *************
+A test is considered successful if it completed without throwing any exception.
+
+*** how to run only failed test cases ****
+go to test-output folder > testng-failed.xml > right click > run as TestNg Suite.
+
+
+

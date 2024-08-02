@@ -1,0 +1,132 @@
+Log4j2
+------------
+Depencies- 
+1. add log4j-core
+2. add log4j-api
+
+3. Log4j2.properties file or Log4j.xml file
+pase any of these files in project home directory.
+
+Log4j2.properties file is a configuration file
+which stores entire runtime configuration used by log4j.
+
+4. create Log4j2.properties file into src/test/resources folder.
+or create Log4j2.xml file into src/test/resources folder.
+
+5. import log4j package
+import org.apache.logging.log4j.*;
+
+6. create object of Logger
+Logger logger = LogManager.getLogger("ClassName.class");
+
+Custom Log Levels:  https://logging.apache.org/log4j/2.x/manual/customloglevels.html
+------------------------------------------------------
+Standard log levels built-in to Log4J
+Standard Level	intLevel
+OFF	0
+FATAL	100
+ERROR	200
+WARN	300
+INFO	400
+DEBUG	500
+TRACE	600
+ALL
+
+note: it will log all level above from specified root logger level
+example: if you specify DEBUG then FATAL, ERROR, WARN, INFO logs also will be printed.
+
+*** Log4j2.xml file ***
+-----------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" strict="true">
+	<Appenders>
+		<Appender type="Console" name="STDOUT">  <!-- STDOUT will print logs in console -->
+			<Layout type="PatternLayout"
+				pattern="%d{HH:mm:ss.SSS} [%t]%-5level %logger{36} - %msg%n" />
+		</Appender>
+
+		<Appender type="File" name="file" fileName="c:\temp\log\app.log">
+			<Layout type="PatternLayout"
+				pattern="%d{HH:mm:ss.SSS} [%t]%-5level %logger{36} - %msg%n" />
+		</Appender>
+	</Appenders>
+
+	<Loggers>
+		<Root level="all">
+			<AppenderRef ref="file" />
+		</Root>
+	</Loggers>
+</Configuration>
+
+
+*** Log4j2.properties file ***
+----------------------------------------------------
+
+# Root logger option
+log4j.rootLogger=INFO, file, stdout
+
+# Direct log messages to a log file
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+log4j.appender.file.File=C:\\logging.log
+log4j.appender.file.MaxFileSize=10MB
+log4j.appender.file.MaxBackupIndex=10
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+ 
+# Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+---------------------------------------------------------------------------------------------
+#Define root logger options
+log4j.rootLogger=DEBUG, file, console <!-- define root logger level -->
+
+#Define console appender
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+logrj.appender.console.Target=System.out
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%-5p %c{1} - %m%n
+
+#Define rolling file appender
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+log4j.appender.file.File=logs/main.log  <!-- define file path -->
+log4j.appender.file.Append=true
+log4j.appender.file.ImmediateFlush=true
+log4j.appender.file.MaxFileSize=10MB
+log4j.appender.file.MaxBackupIndex=5
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d %d{Z} [%t] %-5p (%F:%L) - %m%n
+
+#Define loggers
+log4j.logger.com.journaldev.log4j=WARN, file, console
+log4j.logger.com.journaldev.log4j.logic=DEBUG, file, console
+
+#setting additivity
+log4j.additivity.com.journaldev.log4j=false
+log4j.additivity.com.journaldev.log4j.logic=false
+-----------------------------------------------------------
+
+
+*** Log4j2 usage ***
+-----------------------------------------------------
+package com.journaldev.log4j.main;
+import org.apache.logging.log4j.*;
+public class Log4jExample {
+	
+	public static void main(String[] args) {
+
+		Logger logger = Logger.getLogger(Log4jExample.class);
+
+		logger.debug("My Debug Log");
+		logger.info("My Info Log");
+		logger.warn("My Warn Log");
+		logger.error("My error log");
+		logger.fatal("My fatal log");
+				
+	}
+}
+
+
+
