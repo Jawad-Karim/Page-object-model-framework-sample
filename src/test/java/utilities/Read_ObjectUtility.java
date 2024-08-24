@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public class RedaObjectUtility {
+public class Read_ObjectUtility {
 
 	public File file = null;
 	public FileInputStream fis = null;
 	public Properties pro = null;
 
-	public RedaObjectUtility() {
+	public Read_ObjectUtility() {
 
 		try {
 			file = new File("./config_data/config.properties");
