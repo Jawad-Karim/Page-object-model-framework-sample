@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelUtility {
+public class XLutility {
 
 	public File file;
 	public FileInputStream fis;
 	public XSSFWorkbook wb;
 
-	public ExcelUtility() {
+	public XLutility() {
 
 		try {
 			file = new File ("C:/Users/jawad/OneDrive/Documents/ Bank_data.xlsx");
