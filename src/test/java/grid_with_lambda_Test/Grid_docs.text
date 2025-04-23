@@ -1,0 +1,38 @@
+** Selenium Grid with LamdaTest ** video by Mukesh: https://www.youtube.com/watch?v=cD3MNb9f--w
+step 1: open account
+: go to https://www.lambdatest.com/ > signup/signin
+: get user name and access key (click on key symble) and copy.
+: reset access key (click on manage credintial)
+
+step 2: generate capabilities with different options. and paste into a method.
+ https://www.lambdatest.com/capabilities-generator/
+
+ChromeOptions browserOptions = new ChromeOptions();
+browserOptions.setPlatformName("Windows 10");
+browserOptions.setBrowserVersion("135.0");
+HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+ltOptions.put("username", "mdshah404");
+ltOptions.put("accessKey", "LT_p0aVnbV4JRyRX9VHsWRtEMvCsRNulsJhOaVPd4WkxYX0HaV");
+ltOptions.put("geoLocation", "GB");
+ltOptions.put("visual", true);
+ltOptions.put("video", true);
+ltOptions.put("resolution", "1680x1050");
+ltOptions.put("headless", true);
+ltOptions.put("network", true);
+ltOptions.put("timezone", "London");
+ltOptions.put("build", "Facebook");
+ltOptions.put("project", "WhatsApp");
+ltOptions.put("name", "verify title");
+ltOptions.put("console", "info");
+ltOptions.put("networkThrottling", "Regular 4G");
+ltOptions.put("selenium_version", "4.9.0");
+ltOptions.put("w3c", true);
+browserOptions.setCapability("LT:Options", ltOptions);
+
+step 3: initiate WebDriver with browserOptions.
+	WebDriver driver = new RemoteWebDriver(new URI("https://hub.lambdatest.com/wd/hub").toURL(), browserOptions);
+	driver.manage().window().maximize();
+	 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	driver.get("https://www.facebook.com/");
+
+step 4: continue with the rest of the code for the test..
